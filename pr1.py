@@ -35,37 +35,35 @@ class Library:
                 else:
                     return "Ошибка: книга не была взята"
         return "Такой книги нет"
+    
+    def search_author(self, author):
+        res = [book for book in self.books if Book.author == author]
+        if res:
+            return f"{res}"
+        else:
+            return f"Такой книги нету"
+        
+    def search_title(self, title):
+        res = [book for book in self.books if Book.title == title]
+        if res:
+            return f"{Book.author}: {Book.title}"
+        else:
+            return "Такой книги нету"
+        
+    def len_books(self, l):    # l mean len
+        return f"length: {len(self.books)}"
 
     def show_books(self):
         for book in self.books:
             print(book)
 
-    
 
+b1 = Book()
 # Создаём книги
 b1 = Book("Python", "Tommas")
 b2 = Book("C++", "Alice")
+b3 = Library()
 
-# Создаём библиотеку
-lib = Library()
-
-# Добавляем книги
-lib.add_book(b1)
-lib.add_book(b2)
-
-# Проверяем содержимое библиотеки
-for book in lib.books:
-    print(book)  # выводим статус книги
-
-# Берём книгу
-print(lib.borrow_book("Python"))  # Вы взяли книгу: Python
-print(lib.borrow_book("Python"))  # Книга уже взята
-print(lib.borrow_book("Java")) # Такой книги нет
-lib.show_books()
-
-# Проверяем снова статус книг
-for book in lib.books:
-    print(book)
-
+print(b3.search_author("Tommas"))
     
 
